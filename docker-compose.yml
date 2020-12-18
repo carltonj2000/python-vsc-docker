@@ -1,0 +1,7 @@
+version: "3.4"
+
+services:
+  pythonvscdocker:
+    image: pythonvscdocker
+    ports:
+      - 5000:5000

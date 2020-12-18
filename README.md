@@ -1,8 +1,23 @@
 # Python And VSCode Example
 
-Run the app via:
+Did not figure out how to connect the vsc debugger to the
+docker-compose.debug.yml instance.
+Need to solve this.
+
+## Run the app in docker
 
 ```bash
+docker build -f Dockerfile -t pythonvscdocker .
+docker run -d -p 5000:5000 pythonvscdocker # this or the line below
+docker stack deploy pvd --compose-file docker-compose.yml # this or the line above
+docker stack remove pvd
+```
+
+## Run the app at the CLI
+
+```bash
+python3 -m venv env
+source ./env/bin/activate
 pip install -r requirements.txt
 export set FLASK_APP=webapp
 cd hello_app
@@ -24,7 +39,7 @@ After the above:
   - basically it does "sources ./env/bin/activate"
 
 ```bash
-sources ./env/bin/activate # needed if env is not auto sourced
+sources ./env/bin/activate # if not auto sourced
 python3 -m flask run
 pip freeze > requirements.txt
 pip install -r requirements.txt
