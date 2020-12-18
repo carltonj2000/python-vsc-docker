@@ -8,9 +8,11 @@ Need to solve this.
 
 ```bash
 docker build -f Dockerfile -t pythonvscdocker .
-docker run -d -p 5000:5000 pythonvscdocker # this or the line below
-docker stack deploy pvd --compose-file docker-compose.yml # this or the line above
+docker run -d -p 5000:5000 pythonvscdocker
+# either the line above or one below but not both
+docker stack deploy pvd --compose-file docker-compose.yml
 docker stack remove pvd
+docker stack deploy pvd --compose-file docker-compose.debug.yml
 ```
 
 ## Run the app at the CLI
